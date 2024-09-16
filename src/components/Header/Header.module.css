@@ -1,0 +1,81 @@
+.HeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0E1113;
+    border-bottom: 1px solid #3E4142 ;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    
+}
+
+.HeaderContainer div {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    width:150px;
+    height: auto;
+    padding-left: 1rem;
+}
+
+.ButtonsContainer {
+    padding: 1rem;
+}
+
+.button1 {
+    background-color: #2A3236;
+    color: #FFF;
+    border-radius: 50px;
+    padding: 1rem;
+    margin: 0.2rem;
+    border: none;
+    font-weight: bold;
+}
+
+.button1:hover {
+    background-color: #333D42;
+    cursor: pointer;
+
+}
+
+.button2 {
+    background-color: #D93900;
+    color: #FFF;
+    border-radius: 50px;
+    padding: 1rem;
+    margin: 0.2rem;
+    border: none;
+    font-weight: bold;
+}
+
+.button2:hover {
+    background-color: #AE2C00;
+    cursor: pointer;
+}
+
+.button3 {
+    background-color: #0E1113;
+    color: #FFF;
+    border-radius: 50px;
+    padding: 1rem;
+    margin: 0.2rem;
+    border: none;
+    font-weight: bold;
+}
+
+.button3:hover {
+    background-color: #333D42;
+    cursor: pointer;
+}
+
+.minimal {
+    color: white;
+    
+}
+
+.SearchBar {
+    
+}

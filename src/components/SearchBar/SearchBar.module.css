@@ -1,0 +1,49 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.SearchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+   
+    
+}
+
+.InputContainer {
+    width: 100%;
+    
+    /* Asegúrate de que el contenedor tenga el ancho completo de su contenedor padre */
+}
+
+input {
+    background-color: #2A3236;
+    color: #80A295;
+    border-radius: 50px;
+    width: 100%; /* Ajusta esto según el tamaño deseado, por ejemplo: 100% o 30rem */
+    padding: 1rem; /* Ajusta el padding para hacer el input más grande */
+    font-size: 1rem; /* Ajusta el tamaño del texto para hacer el input más grande */
+    border: none;
+    outline:none; 
+    
+}
+
+input::placeholder {
+    color: #b8c7cc;
+    
+}
+
+input:-webkit-autofill {
+    background-color: #2A3236 !important;
+    color: #80A295 !important;
+    -webkit-text-fill-color: #80A295 !important;
+    border: none !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:hover {
+    outline: none;
+    background-color: #333D42;
+    color: #80A295;   
+    
+}
+
