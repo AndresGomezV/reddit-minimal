@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./Header.module.css"
 import RedditLogo from "../../Reddit-Logo.png";
 
-const Header = () => {
+
+const Header = ({ onSearchterm }) => {
+
+
+
   return (
     <>
       <div className={styles.HeaderContainer} >
@@ -11,7 +15,7 @@ const Header = () => {
           <img src={RedditLogo} alt="Reddit Logo" /><h1 className={styles.minimal}>Minimal</h1>
         </div>
         <div className={styles.SearchBar}>
-          <SearchBar />
+          <SearchBar onSearch={onSearchterm} />
         </div>
         <div className={styles.ButtonsContainer}>
           <button className={styles.button1} >Get app</button>

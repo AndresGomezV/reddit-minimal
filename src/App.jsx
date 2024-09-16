@@ -6,26 +6,30 @@ import Topics from "./components/Topics/Topics";
 import styles from "./App.module.css";
 
 const App = () => {
-
   const [selectSubreddit, setSelectSubreddit] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const onSelectSubreddit = (subreddit) => {
     setSelectSubreddit(subreddit);
-  }
+  };
+
+  const onSearchTerm = (term) => {
+    setSearchTerm(term);
+    setSelectSubreddit(null); //limpiar el Subreddit seleccionado si se encontro algo
+  };
 
   return (
-   < div className={styles.gen}>
-    <Header />
-    <div className={styles.app}>
-      
-      <div className={styles.topics}>
-        <Topics onSelectSubreddit={onSelectSubreddit} />
+    <div className={styles.gen}>
+      <Header onSearchterm={onSearchTerm} />
+      <div className={styles.app}>
+        <div className={styles.topics}>
+          <Topics onSelectSubreddit={onSelectSubreddit} />
+        </div>
+        <div className={styles.posts}>
+          <Posts subreddit={selectSubreddit} searchTerm={searchTerm}/>
+        </div>
+        <Comments />
       </div>
-      <div className={styles.posts}>
-        <Posts subreddit={selectSubreddit} />
-      </div>
-      <Comments />
-    </div>
     </div>
   );
 };

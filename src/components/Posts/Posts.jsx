@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Post from "../Post/Post";
 import styles from "./Posts.module.css";
+import Post from "../Post/Post";
 
-const Posts = ({ subreddit }) => {
+const Posts = ({ subreddit, searchTerm }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      if (!subreddit) return;
+      let url = "https://www.reddit.com/r/all/search.json?q=" + encodeURIComponent(searchTerm) + "&sort=relevance";
+      
+      if (subreddit) {
+        url = `https://www.reddit.com/r/${subreddit}/search.json?q=${encodeURIComponent(searchTerm)}&restrict_sr=1&sort=relevance`;
+      }
 
       try {
-        const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
+        const response = await fetch(url);
         if (response.ok) {
           const jsonResponse = await response.json();
           setPosts(jsonResponse.data.children.map((child) => child.data));
@@ -22,16 +26,18 @@ const Posts = ({ subreddit }) => {
       }
     };
 
-    fetchPosts(); 
-  }, [subreddit]);
+    if (searchTerm) {
+      fetchPosts();
+    }
+  }, [subreddit, searchTerm]); // Ejecutar cuando cambie subreddit o searchTerm
 
   return (
-    <div className={styles.MainContainer}>
-      <div className={styles.PostsContainer}>
-        {posts.map((post) => (
-          <Post key={post.id} post={post} />
-        ))}
-      </div>
+    <div className={styles.PostsContainer}>
+      {posts.length > 0 ? (
+        posts.map((post) => <Post key={post.id} post={post} />)
+      ) : (
+        <p>No posts found for the search term "{searchTerm}"</p>
+      )}
     </div>
   );
 };
