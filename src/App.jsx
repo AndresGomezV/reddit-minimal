@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header/Header";
 import Posts from "./components/Posts/Posts";
 import Comments from "./components/Comments/Comments";
@@ -6,16 +6,23 @@ import Topics from "./components/Topics/Topics";
 import styles from "./App.module.css";
 
 const App = () => {
+
+  const [selectSubreddit, setSelectSubreddit] = useState(null);
+
+  const onSelectSubreddit = (subreddit) => {
+    setSelectSubreddit(subreddit);
+  }
+
   return (
    < div className={styles.gen}>
     <Header />
     <div className={styles.app}>
       
       <div className={styles.topics}>
-        <Topics />
+        <Topics onSelectSubreddit={onSelectSubreddit} />
       </div>
       <div className={styles.posts}>
-        <Posts />
+        <Posts subreddit={selectSubreddit} />
       </div>
       <Comments />
     </div>

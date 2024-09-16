@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import Post from "../Post/Post";
 import styles from "./Posts.module.css";
 
-const Posts = () => {
+const Posts = ({ subreddit }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
+      if (!subreddit) return;
+
       try {
-        const response = await fetch("https://www.reddit.com/r/all.json");
+        const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
         if (response.ok) {
           const jsonResponse = await response.json();
           setPosts(jsonResponse.data.children.map((child) => child.data));
@@ -20,8 +22,8 @@ const Posts = () => {
       }
     };
 
-    fetchPosts();
-  }, []);
+    fetchPosts(); 
+  }, [subreddit]);
 
   return (
     <div className={styles.MainContainer}>
